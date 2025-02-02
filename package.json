@@ -1,0 +1,88 @@
+{
+  "name": "eskaext",
+  "displayName": "eskaext",
+  "description": "1C extension",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "eskaext.helloWorld",
+        "title": "eskaext: Hello World"
+      },
+      {
+        "command": "eskaext.version",
+        "title": "eskaext: Version"
+      },
+      {
+        "command": "eskaext.refreshTreeView",
+        "title": "eskaext: Refresh treeview"
+      },
+      {
+        "command": "eskaext.onTreeItemClick",
+        "title": "eskaext: On Tree Item Click"
+      },
+      {
+        "command": "eskaext.cmdimport",
+        "title": "Импорт конфигурации",
+        "icon": "resources/ui/import.png"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "eskaext",
+          "title": "eskaext",
+          "icon": "resources/eskaext.svg"
+        }
+      ]
+    },
+    "views": {
+      "eskaext": [
+        {
+          "id": "eskaexttree",
+          "name": "eskaext tree"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "eskaext.cmdimport",
+          "group": "navigation",
+          "when": "view == eskaexttree"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.96.0",
+    "@types/yauzl": "^2.10.3",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.16.0",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "yauzl": "^3.2.0"
+  }
+}
